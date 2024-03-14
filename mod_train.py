@@ -563,6 +563,7 @@ class Opt(BaseModel):
     local_rank: int = -1
     freeze: int = [0]
     label_smoothing: float = 0.0
+    notest: bool = False
 
 @app.post("/train_model")
 async def train_model(opt: Opt):
@@ -731,3 +732,4 @@ async def train_model(opt: Opt):
         plot_evolution(yaml_file)
         print(f'Hyperparameter evolution complete. Best results saved as: {yaml_file}\n'
               f'Command to train a new model with these hyperparameters: $ python train.py --hyp {yaml_file}')
+
